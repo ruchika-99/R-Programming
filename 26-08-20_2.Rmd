@@ -1,0 +1,148 @@
+---
+title: "26-08-20_2"
+author: "RUCHIKA LALLA_2048130"
+date: "8/26/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# ASSIGNMENT- apply FUNCTIONS
+
+## AIM:
+The aim of this assignment is to practice the applications of the appy functions and learn to troubleshoot and rectify any errors that may arise.
+
+### Question 1:
+Construct a matrix of 5 rows and 4 columns. Use apply functions in 5 different ways.
+
+The first step is to create the matrix.
+```{r}
+matrix<-matrix(c(sample(1:50,20,replace = FALSE)),nrow=5,ncol=4)
+matrix
+```
+
+```{r}
+my.matrix<-matrix(c(1:20),nrow=5,ncol=4)
+my.matrix
+```
+
+The next step is to use the apply function in 5 different ways.
+
+We can find the sum of the rows and columns.
+```{r}
+apply(my.matrix,1,sum)
+```
+
+```{r}
+apply(my.matrix,2,sum)
+```
+
+We can find the length of the rows and columns.
+```{r}
+apply(my.matrix,1,length)
+```
+
+```{r}
+apply(my.matrix,2,length)
+```
+
+We can also alter the elements.
+```{r}
+apply(my.matrix,1,function(x) x-7)
+```
+
+```{r}
+apply(my.matrix,2,function(x) x*4)
+```
+
+Finally, we can also find the mean of the rows and columns.
+```{r}
+apply(my.matrix, 1, mean)
+```
+
+```{r}
+apply(my.matrix, 2, mean)
+```
+
+apply functions can be used to find the sum of the rows and columns, length, and alter the elements.
+```{r}
+apply(matrix,c(1,2),function(x) x+3)
+```
+
+```{r}
+apply(matrix, 1, function(x) length(x)-2)
+```
+
+
+However, it also has a number of other functionalities. We can use apply to find and alter the mean for the rows and columns.
+```{r}
+apply(matrix,1,mean)
+```
+
+```{r}
+apply(matrix,1,function(x) mean(x)+2)
+```
+
+Similarly, we can also use it to find and alter the median of the rows and columns.
+```{r}
+apply(matrix, 2, median)
+```
+
+```{r}
+apply(matrix, 2, function(x) median(x)-1)
+```
+
+We can also use apply to add a character string to the matrix.
+```{r}
+apply(matrix, c(1,2), function(x) paste0("Rs.",x) )
+```
+
+### Question 2:
+Select any dataset in R, pick a variable and demonstrate the use of apply functions.
+
+```{r}
+data<-datasets::iris
+data
+```
+
+#### About the Dataset:
+This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
+
+Using apply functions, we can perform a number of functions on the data from the dataset as well.
+```{r}
+sp.length<-data$Sepal.Length
+vapply(sp.length, sum, numeric(1))
+```
+
+```{r}
+sapply(sp.length, function(x) x*2)
+```
+
+```{r}
+sapply(sp.length, function(x) min(x)-2)
+```
+
+
+```{r}
+my.data<-datasets::airquality
+my.data
+```
+
+This dataset gives the daily air quality measurements in New York, May to September 1973.
+
+```{r}
+wind<-my.data$Wind
+```
+
+```{r}
+vapply(wind,length, numeric(1))
+```
+
+```{r}
+sapply(wind, function(x) x-7)
+```
+
+## CONCLUSION:
+Thus, we are able to use a combination of apply, sapply, lapply and tapply functions to carry out functions with lists, vectors and matrices.

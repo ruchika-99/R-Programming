@@ -1,0 +1,121 @@
+---
+title: "26-08-20"
+author: "RUCHIKA LALLA_2048130"
+date: "8/26/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# APPLY FUNCTIONS
+
+## apply
+
+Apply functions are a family of functions in base R which allow you to repetitively perform an action on multiple chunks of data.
+An apply function is essentially a loop, but run faster than loops and often require less code.
+
+The apply functions are apply, lapply, sapply, vapply, tapply and mapply. There are so many different apply functions because they are meant to operate on different types of data.
+
+```{r}
+?apply
+```
+
+### Q) Create a matrix with 1-10 in column 1, 11-20 in column 2 and 21-30 in column 3. 
+```{r}
+my.matrix<-matrix(c(1:10,11:20,21:30),nrow = 10, ncol = 3)
+my.matrix
+```
+
+### Q) Find the sum of each row and column.
+```{r}
+apply(my.matrix,1,sum)
+```
+
+```{r}
+apply(my.matrix,2,sum)
+```
+
+### Q) Find the dimensions of the rows and columns.
+```{r}
+apply(my.matrix,2,length)
+```
+
+```{r}
+apply(my.matrix,1,length)
+```
+
+## EXERCISE
+
+### Q1) Find n-1 for each column.
+### Q2) Increase all values of matrix by 5.
+
+```{r}
+#A1
+dec.length<-function(x) {
+  length(x)-1
+}
+apply(my.matrix,2,dec.length)
+```
+
+```{r}
+#A2
+my.newmatrix<-apply(my.matrix,1:2, function(x) x+5)
+my.newmatrix
+```
+
+### Q) Construct a vector of 10 numbers from 1 to 10.
+```{r}
+vec<-c(1:10)
+vec
+apply(vec,1,sum)#apply functions can only be used on matrices
+```
+
+## lapply, sapply, vapply
+
+These are all functions that will loop a function through data in a list or vector.
+
+```{r}
+?lapply
+```
+
+```{r}
+lapply(vec,sum)
+```
+
+This function did not add up the values like we may have expected it to. This is because lapply treats the vector like a list and applies the function to each point in the vector. 
+
+```{r}
+A<-c(1:9)
+B<-c(1:12)
+C<-c(1:15)
+my.list<-list(A,B,C)
+lapply(my.list,sum)
+```
+
+```{r}
+sapply(vec,sum)
+```
+
+```{r}
+sapply(my.list,sum)
+```
+
+sapply works just like lapply, but will simplify the output if possible. This means that instead of returning a list like lapply, it will return a vector.
+
+vapply is similar to sapply, but it requires you to specify what type of data you are expecting the arguments for vapply. FUN.VALUE is where you specify the type of data you are expecting.
+
+```{r}
+vapply(vec,sum,numeric(1))
+```
+
+```{r}
+vapply(my.list,sum,numeric(1))
+```
+
+```{r}
+vapply(my.list,sum,numeric(1))
+```
+
+

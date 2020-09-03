@@ -1,0 +1,185 @@
+---
+title: "03/08/2020"
+author: "RUCHIKA LALLA 2048130"
+date: "8/3/2020"
+output: word_document
+---
+
+```{r setup, cache=F}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# EXAMPLES OF BASIC R CONCEPTS
+
+```{r}
+#Mathematical, Logical, Assign Values
+3+2
+6*7
+```
+Here, we revise the use of mathematical operators to use R as a calculator.
+
+```{r}
+#Logical Values
+3<4
+2+2==5
+```
+
+T and F are shorthand for TRUE and FALSE.
+Logical operators can help check a certain condition.
+
+```{r}
+Happy Learning
+```
+Since the string was not enclosed in quotes, it cannot be printed or stored as a string.
+
+```{r}
+"Happy Learning"
+```
+
+Now that the string was enclosed in quotes, it can be printed or assigned to a variable.
+
+```{r}
+x<-42
+x/7
+```
+
+Here, since R has stored data of the numeric class in the variable x, mathematical operations can be carried out on it as well.
+
+```{r}
+x<-"Happy Learning"
+x/7
+```
+
+However, R reassigns the variable if some other data is attached to the variable name. Now, a string is attached to x. Thus, no mathematical operation can be carried out on it.
+
+```{r}
+x
+```
+
+The variable can also be printed.
+
+```{r}
+#Functions
+sum(2,3,5)
+c=rep("576",times=3)
+c
+rep("Happy Learning",times=3)
+sqrt(64)
+```
+
+Functions can be used to carry out a variety of operations. These operations can be mathematical, logical or can even be used to generate random numbers/lists.
+
+```{r}
+c/8
+```
+
+Since we generated a list of numbers in quotes, they act as strings. Thus, no mathematical operations can be carried out on strings.
+
+```{r}
+#Vector with String
+c('a','b','c') #c is short for combine
+```
+
+Vector is simply a list of values. It can be of any data type class.
+
+```{r}
+#Vector with Numeric
+c(3,6,7)
+```
+
+```{r}
+a=(5,6,7)
+a
+```
+
+Here, the vector was not created because we did not use the combine command. We cannot create vectors without this command.
+
+```{r}
+#Sequence Vector
+5:9
+seq(5,9)#increment of 1 is the default option
+seq(5,9,0.5)
+9:5 #vector from 9 down to 5
+```
+
+The sequence vector is necessary for generating a sequence required for any calculation.
+
+```{r}
+#Vector Access
+sentence<-c('you','me','R')
+sentence[3]
+sentence[1]
+```
+
+The benefit of using vectors in R is that we can access different items, change items in the list, remove items or even add items.
+
+```{r}
+#Change and Add in a Vector
+sentence[3]<-'SAS'
+sentence[4]<-'SPSS'
+sentence
+sentence[c(1,3)] #access 1st and 3rd element
+sentence[2:4] #access 2nd to 4th element
+```
+
+```{r}
+#Vector Math
+a<-c(4,5,6)
+a
+a+1
+a/2
+a*2
+```
+
+Basic mathematical operations can be carried out on vectors.
+
+```{r}
+#Vector Addition and Multiplication
+b<-c(7,8,9)
+a+b
+a-b
+a*b
+sqrt(a)
+```
+
+In addition, two matrices can also be operated upon.
+
+```{r}
+#Vector:Compare Items
+a==c(4,100,6)
+```
+
+You can also check if some items exist in the list using logical operations.
+
+```{r}
+#NA Value
+a<-c(1,3,NA,7,9)
+sum(a)
+```
+
+When an NA value is included in a vector or appears when division is carried out and the denominator does not exist, it can hamper other operations that you would want to carry out.
+
+```{r}
+help(sum)
+```
+```{r}
+sum(a,na.rm=TRUE) #the rm command removes NA
+```
+
+Using the na.rm command, we can remove the NA values and carry out the required operations.
+
+```{r}
+#Matrices
+matrix(0,3,4)
+```
+
+This is a very simple way to create a zero matrix.
+
+```{r}
+#Vector to Matrix
+a<-1:12
+print(a)
+matrix(a,3,4)
+```
+
+Using a vector, we can generate the required matrix.

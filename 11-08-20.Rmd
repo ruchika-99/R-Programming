@@ -1,0 +1,245 @@
+---
+title: "11-08-20"
+author: "RUCHIKA LALLA 2048130"
+date: "8/11/2020"
+output: word_document
+---
+
+```{r setup, cache=F}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# FUNCTIONS AND LOOPS
+
+# FUNCTIONS
+
+Functions can be defined with any number of named arguments. The arguments specify the components to be used in the function. Arguments can be of any type (eg- vectors, data frames, lists, etc.)
+
+Syntax: Name<-function(argument) {statement}
+
+```{r}
+Myfirstfn<-function(x){x+x}
+Myfirstfn(10)
+Myfirstfn(15)
+```
+
+```{r}
+MyFirstfn(11)
+```
+
+```{r}
+Mysecondfn<-function(t,z) { #code is case-sensitive
+  value=z*3
+  value=value*t
+  print(value)
+}
+```
+
+```{r}
+Mysecondfn<-function(t,z) { #code is case-sensitive
+  value=z*3
+  Value=value*t
+  print(value)
+}
+```
+
+```{r}
+Mysecondfn<-function(t,z) { #code is case-sensitive
+  value=z*3
+  value=value*t
+  Print(value)
+}
+```
+
+```{r}
+t=5
+z=9
+Mysecondfn(t,z)
+```
+
+```{r}
+t=11
+z=8
+Mysecondfn(t,z)
+```
+```{r}
+t=100
+z=10
+Mysecondfn(t,z)
+```
+
+# LOOPS
+
+A loop is a collection of commands that are run over and over again. A for loop runs the code a fixed number of times, or on a fixed set of objects. A while loop runs the code until a condition is met.
+
+Sytax for loop: for(name in vector) {commands}
+
+```{r}
+for(z in 1:12){print(z)}
+```
+
+```{r}
+f3<-function(x,y) {
+  z1<-x+y
+  z2<-x+2*y
+  list(result1=z1,result2=z2)
+}
+```
+
+```{r}
+f3(2,5)
+```
+
+```{r}
+f3<-function(x,y) {
+  Z1<-x+y
+  z2<-x+2*y
+  list(result1=z1,result2=z2)
+}
+```
+
+```{r}
+total<-0
+for(i in 1:5) {
+  total=total+i
+}
+total
+```
+
+```{r}
+total<-0
+for(i in 1:10) {
+  total=total+i
+}
+total
+```
+
+Syntax for loop: while(condition) {commands}
+
+```{r}
+x<-0
+while(x<10) {x<-x+4
+print(x)}
+```
+
+## Exercise
+```{r}
+total<-0  #Example code
+for(i in 1:5) {
+  total=total+i
+}
+print(total)
+```
+
+```{r}
+total<-0
+for(i in 1:20) {
+  total=total+(i+1)
+}
+total
+```
+
+```{r}
+total<-0
+for(i in -10:15) {
+  total=total+i
+}
+total
+```
+
+```{r}
+total<-0
+for(i in -10:10) {
+  total=total+exp((i)**(1/i))
+}
+total
+```
+
+```{r}
+total<-0
+for(i in 0:8) {
+  total=3*i
+  total1=total+3*i
+  print(total)
+}
+```
+
+```{r}
+total<-0
+for(i in 0:20) {
+  total=total+(1/(2**i))
+}
+total
+```
+
+## PASTE FUNCTION
+The Paste function combines several inputs into a single character string.
+
+```{r}
+paste("xyz",1:10)
+```
+
+```{r}
+paste("xyz",c(2,5,7,"test",4.5))
+```
+
+```{r}
+paste("xyz",1:10,sep=" ")
+```
+
+```{r}
+paste("xyz",1:10,sep="/")
+```
+
+```{r}
+append("xyz",1:10)
+```
+
+append command is useful to add elements to the end of a list, while the paste command joins the elements and creates a list.
+
+## IF ELSE STATEMENTS
+
+```{r}
+a<-c(1,3,5,6) 
+if(a>4) {print("bigger than 4")}
+else if(a<=1) {print("less than or equal to 1")}
+else {print("between 1 and 4")}
+if else(a>4,"bigger than 4","less than or equal to 4")
+```
+
+```{r}
+a<-c(1,3,5,6)
+for(i in a) {
+if(i>4) {print("bigger than 4")}
+else if(i<=1) {print("less than or equal to 1")}
+else {print("between 1 and 4")}
+}
+```
+
+```{r}
+a<-c(1,3,5,6)
+for(i in a) {
+print(ifelse(i>4,"bigger than 4","less than or equal to 4"))
+}
+```
+
+```{r}
+#A2
+total<-0
+for(i in 1:5) {
+  total=total+i
+  print(ifelse(5*i<15,"not required","required"))
+}
+total
+```
+
+```{r}
+#A3
+sales<-c(100,200,50,70,80,150,90) #1 week sales
+for(i in sales) {
+  if(i<=80) {print("Average Sales")}
+  else if(i>150) {print("Very Good Work")}
+  else {print("Good Work")}
+}
+```
+

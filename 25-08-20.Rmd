@@ -1,0 +1,86 @@
+---
+title: "25-8-20"
+author: "RUCHIKA LALLA_2048130"
+date: "8/25/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# RECURSIVE FUNCTION
+
+A Recursive function is one that calls itself and this technique is known as recursion. This special programming technique can be used to solve problems by breaking them into smaller and simpler sub-problems.
+
+```{r}
+recursive.factorial<-function(x) {
+  if (x == 0)    return(1)
+  else           return(x*recursive.factorial(x-1))
+}
+```
+
+```{r}
+recursive.factorial(0)
+```
+
+```{r}
+recursive.factorial(7)
+```
+
+The use of recursion often makes code shorter and looks clean. However, it is sometimes hard to follow through the code logic. Recursive functions are alsomemory intensive, since it can result into a lot of nested function calls. This must be kept in mind while using it to solve big problems.
+
+### Q1) Find the sum of natural numbers using recursive function.
+```{r}
+recursive.sumofnatnos<-function(x) {
+  if (x == 0)    return(0)
+  else           return(x+recursive.sumofnatnos(x-1))
+}
+```
+
+```{r}
+recursive.sumofnatnos(0)
+```
+
+```{r}
+recursive.sumofnatnos(8)
+```
+
+### Q2) Find the sum of the squares of the first n natural numbers using recursive functions.
+```{r}
+recursive.sumofsquares<-function(x) {
+  if (x == 0)    return(0)
+  else           return((x*x)+(recursive.sumofsquares(x-1)))
+}
+```
+
+```{r}
+recursive.sumofsquares(0)
+```
+
+```{r}
+recursive.sumofsquares(3)
+```
+
+### Q3) Generate the Fibonnaci sequence using recursion.
+```{r}
+recursive.fibonacci <- function(n) {
+if(n <= 1) {
+return(n)
+} else {
+print("Fibonacci sequence:")
+for(i in 0:(n-1)) {
+print(recursive.fibonacci(i))
+}
+}
+}
+```
+
+```{r}
+recursive.fibonacci(1)
+```
+
+```{r}
+recursive.fibonacci(11)
+```
+

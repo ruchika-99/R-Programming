@@ -1,0 +1,93 @@
+---
+title: "18-08-20"
+author: "RUCHIKA LALLA 2048130"
+date: "8/18/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# INTRODUCTION TO R MARKDOWN
+
+R Markdown is a very helpful feature of R that allows users to compile their programs, outputs and explanations into one single PDF, Word document or HTML file.
+
+## AIM:
+Any basic analysis can be carried out in R once a dataset is imported. Thus the aim of this lab is to import datasets using two different techniques and carrying out some exploratory data analysis.
+
+### Question 1:
+Import a dataset saved in a text file into R.
+
+```{r}
+library(readr)
+test <- read_delim("C:/Users/LENOVO/Desktop/Ruchika/MStat/R Programming/data.txt",delim=",")
+test
+```
+
+Since the text file is delimited using a comma, we use the read_delim() command to create a data frame using the inputs in R.
+
+### Question 2:
+Import a dataset into R using Excel and describe the data.
+
+```{r}
+library(readxl)
+df<- read_excel("C:/Users/LENOVO/Desktop/Ruchika/MStat/R Programming/data.xlsx")
+```
+
+The read_excel() command is a useful way of importing Excel datasets into R and using them for further analysis.
+
+```{r}
+dim(df)
+```
+
+The dim() command gives you the dimensions of the dataset you have selected, i.e. there are 185 rows and 17 columns in the dataset.
+
+```{r}
+colnames(df)
+```
+
+The colnames() command gives the column headings in the dataset, providing a brief overview of the type of data contained in the analysis.
+
+```{r}
+head(df,10)
+```
+
+The head() command gives the first 10 entries in the dataset.
+
+```{r}
+tail(df,10)
+```
+
+The tail() command gives the last 10 entries in the dataset.
+
+```{r}
+summary(df)
+```
+Using summary(), we are able to obtain the summary statistics for each of the variables present in the dataset.
+
+```{r}
+library(skimr)
+```
+
+skimr is another package that can be used for basic data exploration. Another example is DataExplorer.
+
+```{r}
+skim(df)
+```
+
+skim() is another way of obtaining summary statistics for the dataset. It also provides inline histograms that provide greater in-depth analysis.
+
+###Question 3:
+Create a histogram for any variable in the dataset.
+
+```{r}
+hist(df$Sleep)
+```
+
+Thus, we are able to plot a histogram for the number of hours of sleep the people in the dataset get on an average.
+
+# CONCLUSION
+Thus, we are able to import datasets into R and carry out some basic exploratory analysis.
+
+
