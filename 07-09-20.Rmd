@@ -1,0 +1,160 @@
+---
+title: "07-09-20"
+author: "RUCHIKA LALLA_2048130"
+date: "9/7/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# CREATING A DATE
+
+```{r}
+as.Date("2012-08-30")   #creating a date
+```
+
+```{r}
+as.Date("08/30/2012", format = "%m/%d/%Y")  #specify the format
+```
+
+The date class is the simplest data type to be used for dates. These will be internally stored as integers. The specific date used to index the date is called the origin. Typically, programming languages use a default origin of 01-01-1970. This is considered as Day 0. 
+
+```{r}
+as.Date(41149, origin = "1900-01-01") #use a different origin
+```
+
+```{r}
+as.Date(42000, origin = "1950-01-01")
+```
+
+```{r}
+Sys.Date()  #to calculate the system date
+```
+
+```{r}
+Sys.Date()-as.Date("1970-01-01")
+```
+
+```{r}
+print(Sys.Date())  #can print the system date in 3 different ways
+x<-format(Sys.Date())
+x
+as.character(Sys.Date())
+```
+
+```{r}
+as.numeric(difftime(Sys.Date(),as.Date("1900-01-01"),units = "weeks"))
+```
+The difftime() command can be used to calculate the difference between two dates in terms of seconds, minutes, hours, days and weeks.
+
+```{r}
+library(lubridate)
+```
+
+```{r}
+interval(as.Date("1900-01-01"),Sys.Date()) %/% months(1)
+```
+
+```{r}
+interval(as.Date("1950-01-01"),Sys.Date()) %/% weeks(1)
+```
+
+```{r}
+interval(as.Date("1900-01-01"),Sys.Date()) %/% days(1)
+```
+
+```{r}
+interval(as.Date("1900-01-01"),Sys.Date()) %/% minutes(1)
+```
+
+Thus, the lubridate package can be used to find the difference between two dates in months, days, weeks, minutes, etc.
+
+
+# DATA FRAMES
+
+A dataframe is a table or a 2D array-like structure in which each column contains the value of one variable and each row contains one set of values from each column.
+
+Characteristics of Data Frames-
+1. Column names should be non-empty.
+2. Row names should be unique. 
+3. Every column should contain the same number of data items.
+4. Data frames can consist of different vectors like numeric, character, logical, etc.
+
+## Q) Create a dataframe with 10 values consisting of serial no., name of the person, marks in Statistics and date of birth.
+
+```{r}
+student.details<-data.frame(SlNo=c(1:10),Name=c("A","B","C","D","E","F","G","H","I","J"),Marks=c(35,40,21,34,50,32,45,32,49,33),DOB=as.Date(c("2000-01-01","1999-08-27","1999-05-27","2000-04-05","1999-01-12","2000-01-13","1999-05-27","2000-10-02","1999-05-20","1999-10-04")))
+student.details
+```
+
+```{r}
+str(student.details)
+```
+
+```{r}
+summary(student.details)
+```
+
+
+We observe that the names of the students has been converted to factors, i.e. the default behavior of R while creating data frames is to convert all characters into factors. To overrule this, we use the stringAsfactor command.
+
+```{r}
+student.details1<-data.frame(SlNo=c(1:10),Name=c("A","B","C","D","E","F","G","H","I","J"),Marks=c(35,40,21,34,50,32,45,32,49,33),DOB=as.Date(c("2000-01-01","1999-08-27","1999-05-27","2000-04-05","1999-01-12","2000-01-13","1999-05-27","2000-10-02","1999-05-20","1999-10-04")),stringsAsFactors = FALSE)
+student.details1
+```
+
+```{r}
+str(student.details1)
+```
+
+```{r}
+summary(student.details1)
+```
+
+# EXTRACTION FROM A DATA FRAME
+
+```{r}
+extract1<-data.frame(student.details1$Name,student.details1$Marks)
+extract1
+```
+
+```{r}
+extract2<-student.details1[1:2,]
+extract2
+```
+
+```{r}
+extract3<-student.details1[c(1,3),3]
+extract3
+```
+
+# ADDING ROWS AND COLUNS TO THE DATA FRAME
+
+```{r}
+gender=c("F","M","M","M","F","F","F","M","M","M")
+student.details2<-data.frame(student.details1,gender)
+student.details2
+```
+
+```{r}
+student.details1$gender=c("F","M","M","M","F","F","F","M","M","M")
+student.details1
+```
+
+```{r}
+gender=c("F","M","M","M","F","F","F","M","M","M")
+student.details3<-cbind.data.frame(student.details,gender)
+student.details3
+```
+
+These are three different ways to add columns to a data frame.
+
+```{r}
+newstudent.details<-data.frame(SlNo=c(11:14),Name=c("K","L","M","N"),Marks=c(50,31,44,28),DOB=as.Date(c("1999-03-02","2000-11-06","1999-03-03","1999-02-25")))
+finalstudent.details<-rbind.data.frame(student.details,newstudent.details)
+finalstudent.details
+```
+
+rbind and cbind are used to expand data frames by appending extra rows and columns.
